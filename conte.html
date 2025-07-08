@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Conte Malgache – Ifaramalemy sy Ikotobekibo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+    
+    :root {
+      --primary-color: #8e5c3a;
+      --secondary-color: #e6a756;
+      --accent-color: #a86e40;
+      --light-color: #f8f1e6;
+      --dark-color: #2c1a0d;
+    }
+    
+    body { 
+      font-family: 'Merriweather', serif; 
+      line-height: 1.8; 
+      color: var(--dark-color); 
+      background: linear-gradient(to bottom, #fef9f2, #f7e9d7);
+      background-attachment: fixed;
+      scroll-behavior: smooth;
+    }
+    
+    section { 
+      padding: 100px 20px; 
+      max-width: 900px; 
+      margin: auto; 
+      position: relative; 
+    }
+    
+    h1, h2 { 
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      margin-bottom: 40px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    h1 { 
+      font-size: 3.8rem; 
+      letter-spacing: 1px;
+    }
+    
+    h2 {
+      font-size: 2.5rem;
+      position: relative;
+      padding-bottom: 15px;
+      text-align: center;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 4px;
+      background: var(--secondary-color);
+      border-radius: 2px;
+    }
+    
+    .hero { 
+      height: 100vh; 
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('https://e-vetso.com/wp-content/uploads/2024/03/img_4295-1-scaled.jpeg') center/cover no-repeat fixed; 
+      color: white; 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center; 
+      align-items: center; 
+      text-align: center; 
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      padding: 0 20px;
+      z-index: 2;
+      animation: fadeInUp 1.2s ease-out;
+    }
+    
+    .hero p {
+      font-size: 1.4rem;
+      margin: 25px 0 40px;
+      max-width: 600px;
+      font-weight: 300;
+    }
+    
+    .story-img { 
+      width: 100%; 
+      height: 400px;
+      object-fit: cover; 
+      margin: 40px 0; 
+      border-radius: 12px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+      transition: transform 0.5s ease;
+      border: 8px solid var(--light-color);
+      filter: sepia(30%) brightness(95%);
+    }
+    
+    .story-img:hover {
+      transform: scale(1.02);
+    }
+    
+    .scroll-btn { 
+      margin-top: 20px; 
+      padding: 16px 35px; 
+      background: var(--secondary-color); 
+      color: white; 
+      border: none; 
+      border-radius: 30px; 
+      cursor: pointer; 
+      font-size: 1.1rem; 
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.4s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .scroll-btn:hover {
+      background: var(--primary-color);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+    
+    .scroll-btn:active {
+      transform: translateY(1px);
+    }
+    
+    p {
+      font-size: 1.15rem;
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+    
+    .section-content {
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      margin-top: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .section-content::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 8px;
+      height: 100%;
+      background: var(--secondary-color);
+    }
+    
+    footer { 
+      text-align: center; 
+      padding: 60px 20px 40px; 
+      background: var(--dark-color); 
+      color: #d1c1a8;
+      font-size: 1.1rem;
+    }
+    
+    footer a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    footer a:hover {
+      color: white;
+      text-decoration: underline;
+    }
+    
+    .footer-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .madagascar-icon {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: var(--secondary-color);
+      animation: pulse 2s infinite;
+    }
+    
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 10;
+      color: white;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      animation: bounce 2s infinite;
+    }
+    
+    .scroll-indicator i {
+      font-size: 2rem;
+      margin-bottom: 5px;
+    }
+    
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+      }
+      40% {
+        transform: translateY(-20px) translateX(-50%);
+      }
+      60% {
+        transform: translateY(-10px) translateX(-50%);
+      }
+    }
+    
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.8rem;
+      }
+      
+      h2 {
+        font-size: 2rem;
+      }
+      
+      section {
+        padding: 70px 15px;
+      }
+      
+      .hero p {
+        font-size: 1.2rem;
+      }
+      
+      .story-img {
+        height: 300px;
+      }
+      
+      .scroll-btn {
+        padding: 14px 30px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+      
+      h2 {
+        font-size: 1.8rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .story-img {
+        height: 250px;
+      }
+      
+      p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Indray andro hono...</h1>
+      <p>Voici l'histoire d'Ifaramalemy sy Ikotobekibo, un conte traditionnel de Madagascar</p>
+      <button class="scroll-btn" onclick="document.getElementById('intro').scrollIntoView({behavior:'smooth'})">
+        <i class="fas fa-book-open"></i> Commencer l'histoire
+      </button>
+    </div>
+    <div class="scroll-indicator">
+      <i class="fas fa-chevron-down"></i>
+      <span>Défiler</span>
+    </div>
+  </header>
+
+  <section id="intro">
+    <h2>Introduction</h2>
+    <div class="section-content">
+      <img src="https://cdn.futura-sciences.com/sources/images/diaporama/947_Madagascar-Antoine/mada-25.jpg" alt="Village malgache" class="story-img" />
+      <p>Dans un village lointain de Madagascar, vivaient deux enfants : Ifaramalemy, la boiteuse, et Ikotobekibo, le ventru. Ils étaient délaissés par leur propre famille, toujours maltraités et méprisés. Chaque jour était une épreuve pour ces deux âmes innocentes, cherchant désespérément un peu de chaleur humaine dans un monde qui les rejetait.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>La Fuite</h2>
+    <div class="section-content">
+      <img src="https://www.echosciences-grenoble.fr/uploads/article/image/attachment/1005484532/xl_lightning-strike-cloudy-sky-during-night-time.jpg" alt="Fuite dans la nuit" class="story-img" />
+      <p>Un soir d'orage, ne supportant plus les violences et les humiliations, ils creusèrent un trou derrière leur case et s'enfuirent loin dans la brousse. Sous les éclairs qui déchiraient le ciel, ils marchèrent sans fin, déterminés à ne plus jamais revenir dans ce lieu qui ne leur avait apporté que souffrance. Leurs petits pieds ensanglantés ne les empêchaient pas d'avancer vers l'inconnu, préférant les dangers de la nature à la cruauté des hommes.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>La Vie dans la brousse</h2>
+    <div class="section-content">
+      <img src="https://world-explorateur.com/wp-content/uploads/2021/09/MADAGASCAR-EN-GROUPE-1.jpeg" class="story-img" />
+      <p>Après des jours de marche, ils construisirent une petite hutte de branchages et commencèrent une nouvelle vie. Chaque jour, Ikotobekibo partait chasser tandis qu'Ifaramalemy préparait le repas et entretenait leur modeste abri. Ils découvrirent les fruits sauvages, les racines comestibles et apprirent à piéger les petits animaux. Malgré les difficultés, une paix nouvelle régnait dans leur cœur.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>L'attaque de l'ogre Itrimobe</h2>
+    <div class="section-content">
+      <img src="https://www.vol-direct.net/wp-content/uploads/2023/05/Conte-malgache-2.jpg" alt="Ogre Itrimobe" class="story-img" />
+      <p>Mais un jour, un terrible ogre nommé Itrimobe découvrit leur refuge. Cette créature monstrueuse, connue pour dévorer les enfants, tenta de les attraper. Grâce à l'intelligence rusée d'Ifaramalemy et au courage d'Ikotobekibo, ils lui tendirent un piège ingénieux. L'ogre, attiré par l'odeur d'un ragoût, tomba dans une fosse dissimulée sous des branchages où les deux enfants l'achevèrent avec des pierres pointues.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Le Retour et la Richesse</h2>
+    <div class="section-content">
+      <img src="https://i0.wp.com/www.cocolodgemajunga-madagascar.com/wp-content/uploads/2015/01/Madagascar-village-1001-1.jpg?fit=685%2C492&ssl=1" alt="Trésor découvert" class="story-img" />
+      <p>En fouillant le repaire de l'ogre, ils découvrirent des trésors cachés : des colliers d'or, des pierres précieuses et des armes anciennes. Chargés de ces richesses, ils retournèrent au village. Leur famille, qui les croyait morts, les accueillit avec étonnement et admiration. Leur courage et leur ingéniosité leur valurent enfin le respect qu'ils méritaient. Ils partagèrent leurs richesses et vécurent en harmonie, devenant les gardiens de la sagesse du village.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="madagascar-icon">
+        <i class="fas fa-island-tropical"></i>
+      </div>
+      <p>Conte traditionnel malgache adapté – <a href="https://www.voyagemadagascar.com/ifaramalemy-sy-ikotobekibo-l-immortel-conte-malgache" target="_blank">source originale</a></p>
+      <p style="margin-top: 15px;">« L'intelligence et le courage triomphent toujours des épreuves » - Sagesse malgache</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script>
+    // Animation d'entrée de la page héro
+    gsap.from(".hero h1", {opacity: 0, y: -40, duration: 1.5});
+    gsap.from(".hero p", {opacity: 0, y: 30, delay: 0.5, duration: 1.2});
+    gsap.from(".scroll-btn", {opacity: 0, scale: 0.8, delay: 1.2, duration: 0.8});
+    
+    // Animations au défilement
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // Animation des sections
+    gsap.utils.toArray('section').forEach(section => {
+      gsap.from(section, {
+        scrollTrigger: {
+          trigger: section,
+          start: "top 90%"
+        },
+        opacity: 0,
+        y: 50,
+        duration: 1
+      });
+    });
+    
+    // Animation des images
+    gsap.utils.toArray('.story-img').forEach(img => {
+      gsap.from(img, {
+        scrollTrigger: {
+          trigger: img,
+          start: "top 90%"
+        },
+        opacity: 0,
+        scale: 0.9,
+        duration: 1.2
+      });
+    });
+    
+    // Animation du contenu des sections
+    gsap.utils.toArray('.section-content').forEach(content => {
+      gsap.from(content, {
+        scrollTrigger: {
+          trigger: content,
+          start: "top 85%"
+        },
+        opacity: 0,
+        y: 30,
+        duration: 1
+      });
+    });
+  </script>
+</body>
+</html>
